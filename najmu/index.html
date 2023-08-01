@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript program</title>
+</head>
+<body>
+ <div>
+   <select id="myList1" size="5" multiple="multiple">
+    <option value="item1" >item1</option>
+    <option value="item2" >item2</option>
+    <option value="item3" >item3</option>
+    <option value="item4" >item4</option>
+   </select>
+
+   <button onclick="myFunction()">add</button>
+   <button onclick="addAll()">add all</button>
+   <button onclick="moveItems()">add multiple</button>
+
+   <select id="myList2" size="5" multiple="multiple">
+    <option ></option>
+   </select>
+
+ </div>
+ <script>
+    function myFunction() {
+        const items =
+        document.getElementById("myList1").firstElementChild;
+        document.getElementById("myList2").appendChild(items);
+    }
+
+    function addAll() {
+            const sourceList = document.getElementById("myList1");
+            const destinationList = document.getElementById("myList2");
+
+            while (sourceList.options.length > 0) {
+                destinationList.add(sourceList.options[0]);
+            }
+        }
+        function moveItems() {
+            const myFirstList = document.getElementById("myList1");
+            const mySecondList = document.getElementById("myList2");
+            const selectedOptions = Array.from(myFirstList.selectedOptions);
+            selectedOptions.forEach(option => {
+                mySecondList.add(option);
+            });
+        }
+
+ </script>
+</body>
+</html>
